@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+      }
+      header {
+        background: #333;
+        color: #fff;
+        padding-top: 30px;
+        min-height: 90px;
+        border-bottom: #77aaff 3px solid;
+      }
+      header a {
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+      header ul {
+        padding: 0;
+        list-style: none;
+      }
+      header li {
+        float: left;
+        display: inline;
+        padding: 0 20px 0 20px;
+      }
+      .main {
+        padding: 20px;
+        background: #fff;
+        margin-top: 20px;
+      }
+      .card {
+        background: #fff;
+        border: #ccc 1px solid;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .card h3 {
+        margin-top: 0;
+      }
+      .table-container {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Admin Dashboard</h1>
+        <ul>
+          <li><a href="/admin_dashboard">Dashboard</a></li>
+          <li><a href="/">Logout</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="container main">
+      <div class="card">
+        <h3>Security Logs</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Event</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Security logs will be populated here -->
+              {% for log in logs %}
+              <tr>
+                <td>{{ log.timestamp }}</td>
+                <td>{{ log.event }}</td>
+                <td>{{ log.details }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
