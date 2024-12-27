@@ -2,19 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Fake Bank Transfer</title>
+    <title>Bank Transfer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: url("/Assets/Register2.jpg");
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        width: 20%;
+        padding: 2% 3%;
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: #555a7e;
+      }
+      label {
+        color: #555a7e;
+      }
+      .input {
+        display: flex;
+        flex-direction: column;
+      }
+      input {
+        padding: 10px;
+        margin: 5px 0;
+        outline: 1px solid #555a7e;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.3s ease;
+      }
+      input:hover {
+        outline: 1.5px solid rgb(51, 51, 241);
+      }
+      input:focus {
+        outline: 1.5px solid rgb(51, 51, 241);
+      }
+      input[type="submit"] {
+        padding: 10px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: rgb(51, 51, 241);
+        color: white;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: rgb(51, 51, 241, 0.8);
+      }
+    </style>
   </head>
   <body>
-    <h1>Bank Transfer</h1>
     {% if success %}
     <p>Transfer Successful!</p>
     {% endif %}
     <form method="POST" action="/transfer">
+      <h1>Bank Transfer</h1>
       <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
-      <label for="recipient">Recipient:</label>
-      <input type="text" name="recipient" required /><br />
-      <label for="amount">Amount:</label>
-      <input type="number" name="amount" required /><br />
+      <div class="input">
+        <label for="recipient">Recipient:</label>
+        <input type="text" name="recipient" required /><br />
+      </div>
+      <div class="input">
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" required /><br />
+      </div>
       <input type="submit" value="Transfer" />
     </form>
   </body>

